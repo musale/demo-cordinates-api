@@ -1,0 +1,42 @@
+{
+  "name": "demo-cordinates-api",
+  "version": "1.0.0",
+  "description": "An API app that allows geofencing and geofiltering",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "test": "mocha --timeout 10000"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.6.3",
+    "express": "^4.15.3",
+    "mongodb": "^2.2.28",
+    "mongoose": "^4.10.4",
+    "morgan": "^1.8.1",
+    "nodemon": "^1.11.0",
+    "pug": "^2.0.0-beta11",
+    "serve-favicon": "^2.4.2"
+  },
+  "devDependencies": {
+    "chai": "^4.0.1",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/musale/demo-cordinates-api.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "express"
+  ],
+  "author": "Musale Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/musale/demo-cordinates-api/issues"
+  },
+  "homepage": "https://github.com/musale/demo-cordinates-api#readme"
+}
