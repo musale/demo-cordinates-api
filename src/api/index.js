@@ -4,8 +4,8 @@ import geofence from './geofence';
 import geofilterRectangle from './geofilterRectangle';
 import geofilterPolygon from './geofilterPolygon';
 
-export default({config, db}) => {
-  let api = Router();
+export default() => {
+  const api = Router();
 
   api.get('/', (req, res) => {
     res.json({version});
@@ -16,4 +16,4 @@ export default({config, db}) => {
   api.post('/geofilter/polygon', geofilterPolygon);
 
   return api;
-}
+};

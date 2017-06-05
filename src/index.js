@@ -8,7 +8,7 @@ import middleware from './middleware';
 import api from './api';
 import {credentials} from './config';
 
-let app = express();
+const app = express();
 app.server = http.createServer(app);
 const config = credentials.server;
 
