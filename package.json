@@ -4,12 +4,12 @@
   "description": "An API app that allows geofencing and geofiltering",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node -- src/index.js",
+    "dev": "NODE_ENV=dev nodemon --exec babel-node -- src/index.js",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
-    "start": "node dist",
+    "start": "NODE_ENV=production node dist",
     "prestart": "npm run -s build",
     "lint": "eslint src",
-    "test": "mocha --compilers js:babel-core/register --recursive src/test/index.js --timeout 10000"
+    "test": "NODE_ENV=test mocha src --recursive --timeout 10000 --compilers js:babel-register"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
