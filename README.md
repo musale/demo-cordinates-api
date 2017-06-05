@@ -1,7 +1,6 @@
 [![DCA Build Status](https://circleci.com/gh/musale/demo-cordinates-api.svg?style=shield&circle-token=4be9362291fab25bbcabf855ced6c6273b33ef50 "DCA Build Status")]((https://circleci.com/gh/musale/demo-cordinates-api))
 # demo-cordinates-api
 
-[![CircleCI Build Status]()
 Node JS and MongoDB app that geo-fences and geo-filters
 
 ## Requirements
