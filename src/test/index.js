@@ -1,6 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import jsonSchema from 'chai-json-schema';
+// import app from '../index';
 
 process.env.NODE_ENV = 'test';
 const app = 'http://localhost:5000'; // using base url as app import is causing chaos :eye roll:
