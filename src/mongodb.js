@@ -1,13 +1,16 @@
-import {credentials} from './config';
-import {MongoClient} from 'mongodb';
+import mongoose from 'mongoose';
+import config from './config';
 
-const db = credentials.db;
-const connectionString = `mongodb://${db.user}:${db.password}@ds137220.mlab.com:37220/mdb`;
+const options = {
+    server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+    replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }
+};
+
+mongoose.Promise = global.Promise;
+const db = mongoose.connection;
 
 export default callback => {
-  MongoClient.connect(connectionString, (err, database) => {
-    if (err)
-      return console.error(err);
-    callback(database);
-  });
+	// connect to a database if needed, then pass it to `callback`:
+	mongoose.connect(config.db, options);
+	callback(db);
 };
