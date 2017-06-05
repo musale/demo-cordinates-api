@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/musale/demo-cordinates-api/tree/master.svg?style=svgd&circle-token=9f39297f164a9047952a0a698c363310756ca85d)](https://circleci.com/gh/musale/demo-cordinates-api/tree/master)
+[![CircleCI](https://circleci.com/gh/musale/demo-cordinates-api.svg?style=svg)](https://circleci.com/gh/musale/demo-cordinates-api)
 # demo-cordinates-api
 
 Node JS and MongoDB app that geo-fences and geo-filters
