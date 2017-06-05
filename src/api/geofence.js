@@ -60,7 +60,7 @@ export default(req, res) => {
     result.forEach((res)=>{
       const distance = getDistance(coordinate.lat, coordinate.lng, res.lat, res.lng);
       if (checkIfInCircle(distance, arbLocation)) {
-        locations.push([res.lat, res.lng]);
+        locations.push({lat: res.lat, lng: res.lng});
       }
     });
     res.json({url: '/api/v1/geofence', coordinates: locations, radius: arbLocation});
