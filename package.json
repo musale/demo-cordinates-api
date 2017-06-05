@@ -4,27 +4,30 @@
   "description": "An API app that allows geofencing and geofiltering",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
+    "dev": "nodemon --exec babel-node -- src/index.js",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
     "lint": "eslint src",
-    "test": "babel-node src/test/index.js"
+    "test": "mocha --compilers js:babel-core/register --recursive src/test/index.js --timeout 10000"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
+    "chai": "^4.0.1",
+    "chai-http": "^3.0.0",
     "compression": "^1.5.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.7.1",
     "debug": "^2.6.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "geopoint": "^1.0.1",
     "map-async": "^0.1.1",
+    "mocha": "^3.4.2",
     "mongodb": "^2.2.28",
     "mongoose": "^4.10.4",
     "morgan": "^1.8.1",
-    "resource-router-middleware": "^0.6.0",
-    "tape": "^4.6.3"
+    "resource-router-middleware": "^0.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

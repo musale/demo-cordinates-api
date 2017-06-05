@@ -10,6 +10,9 @@ export default() => {
   api.get('/', (req, res) => {
     res.json({version});
   });
+  api.post('/', (req, res) => {
+    res.status(405).json({ error: 'POST to /api/v1 is not allowed.' });
+  });
 
   api.post('/geofence', geofence);
   api.post('/geofilter/rectangle', geofilterRectangle);

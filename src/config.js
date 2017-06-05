@@ -5,7 +5,7 @@ export const credentials = {
     password: process.env.DB_PASSWORD
   },
   server: {
-    port: 5000,
+    port: process.env.PORT || 5000,
     bodyLimit: "100kb",
     corsHeaders: ["Link"]
   }
