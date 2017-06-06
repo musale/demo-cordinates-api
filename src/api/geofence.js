@@ -51,18 +51,18 @@ const checkIfInCircle = (distance, radius) => {
  * @param  {[object]} res - response object
  * @return {[object]} coordinates within R meters of the arbitrary location
  */
-export default(req, res) => {
+export default (req, res) => {
   const db = req.db;
   const locations = [];
   const coordinate = req.body.coordinate;
   const arbLocation = req.body.radius;
-  getCoordinates(db).then((result) =>{
-    result.forEach((res)=>{
+  getCoordinates(db).then((result) => {
+    result.forEach((res) => {
       const distance = getDistance(coordinate.lat, coordinate.lng, res.lat, res.lng);
       if (checkIfInCircle(distance, arbLocation)) {
-        locations.push({lat: res.lat, lng: res.lng});
+        locations.push({ lat: res.lat, lng: res.lng });
       }
     });
-    res.json({url: '/api/v1/geofence', coordinates: locations, radius: arbLocation});
+    res.json({ url: '/api/v1/geofence', coordinates: locations, radius: arbLocation });
   }).catch(err => console.error(err));
 };
