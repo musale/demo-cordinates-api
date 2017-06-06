@@ -1,16 +1,29 @@
-import mongoose from 'mongoose';
-import config from './config';
+import MongoClient from 'mongodb';
 
-const options = {
-    server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-    replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }
-};
+let state = {
+  db: null,
+}
 
-mongoose.Promise = global.Promise;
-const db = mongoose.connection;
+exports.connect = function(url, done) {
+  if (state.db) return done()
 
-export default callback => {
-	// connect to a database if needed, then pass it to `callback`:
-	mongoose.connect(config.db, options);
-	callback(db);
-};
+  MongoClient.connect(url, function(err, db) {
+    if (err) return done(err)
+    state.db = db
+    done()
+  })
+}
+
+exports.getDB = function() {
+  return state.db
+}
+
+exports.close = function(done) {
+  if (state.db) {
+    state.db.close(function(err, result) {
+      state.db = null
+      state.mode = null
+      done(err)
+    })
+  }
+}
