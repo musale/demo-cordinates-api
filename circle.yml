@@ -9,7 +9,6 @@ database:
     - tar -zxvf mongodb-linux-x86_64-ubuntu1204-3.2.3.tgz
     - mkdir -p ./data/db
     - ./mongodb-linux-x86_64-ubuntu1204-3.2.3/bin/mongod --dbpath ./data/db --logpath ./mongod.log --fork || cat ./mongod.log
-    - sudo service mongodb start
 
 dependencies:
   override:
