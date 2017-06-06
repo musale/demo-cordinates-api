@@ -19,17 +19,17 @@ const getCoordinates = db => db.collection('geo').find().toArray();
  * @return {[float]} distance (kilometres) between the point in request and point in database
  */
 const getDistance = (reqLat, reqLng, dbLat, dbLng) => {
-  const EARTH_RADIUS = 6371e3; // metres
-  const lat1 = GeoPoint.degreesToRadians(reqLat);
-  const lat2 = GeoPoint.degreesToRadians(dbLat);
-  const changeInLat = GeoPoint.degreesToRadians(dbLat - reqLat);
-  const changeInLng = GeoPoint.degreesToRadians(dbLng - reqLng);
+    const EARTH_RADIUS = 6371e3; // metres
+    const lat1 = GeoPoint.degreesToRadians(reqLat);
+    const lat2 = GeoPoint.degreesToRadians(dbLat);
+    const changeInLat = GeoPoint.degreesToRadians(dbLat - reqLat);
+    const changeInLng = GeoPoint.degreesToRadians(dbLng - reqLng);
 
-  const a = Math.sin(changeInLat / 2) * Math.sin(changeInLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(changeInLng / 2) * Math.sin(changeInLng / 2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  const d = EARTH_RADIUS * c;
-  console.log(`Distance between [${reqLat}, ${reqLng}] and [${dbLat}, ${dbLng}] is ${d} metres`);
-  return d;
+    const a = Math.sin(changeInLat / 2) * Math.sin(changeInLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(changeInLng / 2) * Math.sin(changeInLng / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = EARTH_RADIUS * c;
+    console.log(`Distance between [${reqLat}, ${reqLng}] and [${dbLat}, ${dbLng}] is ${d} metres`);
+    return d;
 };
 
 /**
@@ -39,11 +39,11 @@ const getDistance = (reqLat, reqLng, dbLat, dbLng) => {
  * @return {[boolean]}        returns true if point is within radius
  */
 const checkIfInCircle = (distance, radius) => {
-  if (distance <= radius) {
-    return true;
-  } else {
-    return false;
-  }
+    if (distance <= radius) {
+        return true;
+    } else {
+        return false;
+    }
 };
 
 /**
@@ -52,17 +52,17 @@ const checkIfInCircle = (distance, radius) => {
  * @return {[object]} coordinates within R meters of the arbitrary location
  */
 export default (req, res) => {
-  const db = req.db;
-  const locations = [];
-  const coordinate = req.body.coordinate;
-  const arbLocation = req.body.radius;
-  getCoordinates(db).then((result) => {
-    result.forEach((res) => {
-      const distance = getDistance(coordinate.lat, coordinate.lng, res.lat, res.lng);
-      if (checkIfInCircle(distance, arbLocation)) {
-        locations.push({ lat: res.lat, lng: res.lng });
-      }
-    });
-    res.json({ url: '/api/v1/geofence', coordinates: locations, radius: arbLocation });
-  }).catch(err => console.error(err));
+    const db = req.db;
+    const locations = [];
+    const coordinate = req.body.coordinate;
+    const arbLocation = req.body.radius;
+    getCoordinates(db).then((result) => {
+        result.forEach((res) => {
+            const distance = getDistance(coordinate.lat, coordinate.lng, res.lat, res.lng);
+            if (checkIfInCircle(distance, arbLocation)) {
+                locations.push({ lat: res.lat, lng: res.lng });
+            }
+        });
+        return res.json({ url: '/api/v1/geofence', coordinates: locations, radius: arbLocation });
+    }).catch(err => console.error(err));
 };
