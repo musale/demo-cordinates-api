@@ -62,5 +62,34 @@ export default ({ db }) => {
         validateCoordinate(res, request.coordinate, next);
     });
 
+    routes.post('/api/v1/geofilter/polygon', (req, res, next) => {
+        const polygon = 'polygon';
+        const request = req.body;
+        // check length, width and coordinate are supplied
+        if (!(polygon in request)) {
+            return res.status(400).json({ error: `${polygon} is needed!` });
+        }
+
+        request.polygon.forEach((coordinate) => {
+            // check coordinate is an array
+            if (!isObject(coordinate)) {
+                return res.status(
+                    400).json({ error: `coordinate should be a key: value object! ${coordinate} is not a key: value object` });
+            }
+            for (const key in coordinate) {
+                if (isNaN(coordinate[key])) {
+                    return res.status(
+                        400).json({ error: `values of coordinate should be numbers. ${key}: ${coordinate[key]} is not a number.` });
+                }
+            }
+        });
+        if (request.polygon.length < 3) {
+            return res.status(
+                400).json({ error: `polygon should have atleast 3 sides! Only ${request.polygon.length} given` });
+        }
+        next();
+    });
+
+
     return routes;
 };
