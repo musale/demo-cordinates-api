@@ -134,4 +134,43 @@ describe('TEST /api/v1/geofilter/rectangle', () => {
         });
     });
 
+    it('it should respond with coordinates within a rectangle of the specified dimensions', (done) => {
+        const payload = {
+            "length": "10.01",
+            "width": "100.90",
+            "coordinate": {
+                "lat": -1.286344923424,
+                "lng": "36.8214912134314"
+            }
+        };
+        const responseSchema = {
+            title: 'geofilter/rectangle response v1',
+            type: 'object',
+            required: ['url', 'coordinates', 'status'],
+            properties: {
+                url: {
+                    type: 'string',
+                },
+                coordinates: {
+                    type: 'array',
+                    minItems: 0,
+                    items: {
+                        type: 'object',
+                    }
+                },
+                status: {
+                    type: 'string'
+                }
+            }
+        };
+        chai.request(app).post('/api/v1/geofilter/rectangle').send(payload).end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.have.property('url').eql('/api/v1/geofilter/rectangle');
+            res.body.should.have.property('coordinates');
+            res.body.should.have.property('status');
+            res.body.should.be.jsonSchema(responseSchema);
+            done();
+        });
+    });
+
 });
