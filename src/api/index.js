@@ -28,6 +28,7 @@ export default () => {
     api.delete('/geofence', (req, res) => {
         res.status(405).json({ error: 'method DELETE on /api/v1/geofence is not allowed.' });
     });
+
     // /api/v1/geofilter/rectangle specs
     api.post('/geofilter/rectangle', geofilterRectangle);
     api.get('/geofilter/rectangle', (req, res) => {
@@ -42,7 +43,21 @@ export default () => {
     api.delete('/geofilter/rectangle', (req, res) => {
         res.status(405).json({ error: 'method DELETE on /api/v1/geofilter/rectangle is not allowed.' });
     });
+
+    // /api/v1/geofilter/polygon specs
     api.post('/geofilter/polygon', geofilterPolygon);
+    api.get('/geofilter/polygon', (req, res) => {
+        res.status(405).json({ error: 'method GET on /api/v1/geofilter/polygon is not allowed.' });
+    });
+    api.put('/geofilter/polygon', (req, res) => {
+        res.status(405).json({ error: 'method PUT on /api/v1/geofilter/polygon is not allowed.' });
+    });
+    api.patch('/geofilter/polygon', (req, res) => {
+        res.status(405).json({ error: 'method PATCH on /api/v1/geofilter/polygon is not allowed.' });
+    });
+    api.delete('/geofilter/polygon', (req, res) => {
+        res.status(405).json({ error: 'method DELETE on /api/v1/geofilter/polygon is not allowed.' });
+    });
 
     return api;
 };
