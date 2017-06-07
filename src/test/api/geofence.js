@@ -135,7 +135,7 @@ describe('TEST /api/v1/geofence', () => {
         const responseSchema = {
             title: 'geofence response v1',
             type: 'object',
-            required: ['url', 'coordinates', 'radius'],
+            required: ['url', 'coordinates', 'status'],
             properties: {
                 url: {
                     type: 'string',
@@ -147,8 +147,8 @@ describe('TEST /api/v1/geofence', () => {
                         type: 'object',
                     }
                 },
-                radius: {
-                    type: 'number'
+                status: {
+                    type: 'string'
                 }
             }
         };
@@ -156,7 +156,7 @@ describe('TEST /api/v1/geofence', () => {
             res.should.have.status(200);
             res.body.should.have.property('url').eql('/api/v1/geofence');
             res.body.should.have.property('coordinates');
-            res.body.should.have.property('radius');
+            res.body.should.have.property('status');
             res.body.should.be.jsonSchema(responseSchema);
             done();
         });
