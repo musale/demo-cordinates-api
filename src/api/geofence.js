@@ -63,6 +63,6 @@ export default (req, res) => {
                 locations.push({ lat: res.lat, lng: res.lng });
             }
         });
-        return res.json({ url: '/api/v1/geofence', coordinates: locations, radius: arbLocation });
+        return res.json({ url: '/api/v1/geofence', coordinates: locations, status: 'success' });
     }).catch(err => console.error(err));
 };
