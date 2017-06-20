@@ -27,7 +27,7 @@ database.connect(config.db, function(err) {
     console.log('Unable to connect to Mongo.');
     process.exit(1);
   } else {
-	const db = database.getDB()
+	const db = database.getDB();
     // internal middleware
 	app.use(middleware({ db }));
 
@@ -36,6 +36,6 @@ database.connect(config.db, function(err) {
 	app.server.listen(process.env.PORT || config.port);
 	console.log(`Started on port ${app.server.address().port} ${process.env.NODE_ENV}`);
   }
-})
+});
 
 export default app;
