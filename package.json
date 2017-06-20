@@ -9,11 +9,12 @@
     "start": "NODE_ENV=production node dist",
     "prestart": "npm run -s build",
     "lint": "eslint src",
+    "pretest": "mongoimport --db test --collection geo --drop --file src/data.json",
     "test": "NODE_ENV=test mocha src --recursive --timeout 10000 --compilers js:babel-register"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
-    "chai": "^4.0.1",
+    "chai": "^4.0.0",
     "chai-http": "^3.0.0",
     "chai-json-schema": "^1.4.0",
     "compression": "^1.5.2",
@@ -43,7 +44,7 @@
     "nodemon": "^1.11.0"
   },
   "peerDependencies": {
-    "chai": "~4.0.0"
+    "chai": "3.5.0"
   },
   "repository": {
     "type": "git",
