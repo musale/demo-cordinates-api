@@ -19,17 +19,7 @@ Node JS and MongoDB app that geo-fences and geo-filters
 * Run `npm run dev` to start a development server on port 5000
 
 ### Testing
-* Create a Mongo DB database
-* Create a collection named `geo`
-* Seed it with `lat` and `lng` documents i.e.
-	```
-	{
-	    lat: -7.324983924832,
-	    lng: 34.02343289420
-	}
-	...
-	```
-* You can use the test data file in `src/data.js`
+* Uses the test data file in `src/data.js`
 * Run `npm test` to perform the tests
 
 ### Documentation
