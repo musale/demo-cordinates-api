@@ -1,4 +1,6 @@
 [![CircleCI](https://circleci.com/gh/musale/demo-cordinates-api.svg?style=svg)](https://circleci.com/gh/musale/demo-cordinates-api)
+
+[![Build Status](https://travis-ci.org/musale/demo-cordinates-api.svg?branch=master)](https://travis-ci.org/musale/demo-cordinates-api)
 # Demo Coordinates API
 
 Node JS and MongoDB app that geo-fences and geo-filters
