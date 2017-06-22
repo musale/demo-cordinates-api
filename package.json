@@ -10,7 +10,7 @@
     "prestart": "npm run -s build",
     "lint": "eslint src",
     "pretest": "mongoimport --db test --collection geo --drop --file src/data.json",
-    "test": "NODE_ENV=test mocha src --recursive --timeout 10000 --compilers js:babel-register"
+    "test": "NODE_ENV=test mocha src --recursive --timeout 10000 --compilers js:babel-core/register"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
