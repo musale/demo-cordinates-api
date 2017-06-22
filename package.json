@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "body-parser": "^1.17.2",
-    "chai": "^4.0.0",
+    "chai": "3.5.0",
     "chai-http": "^3.0.0",
     "chai-json-schema": "^1.4.0",
     "compression": "^1.5.2",
@@ -42,9 +42,6 @@
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.3.0",
     "nodemon": "^1.11.0"
-  },
-  "peerDependencies": {
-    "chai": "3.5.0"
   },
   "repository": {
     "type": "git",
